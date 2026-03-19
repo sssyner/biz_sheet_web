@@ -21,11 +21,11 @@ export default function EditExpensePage({
       </div>
     );
   }
-  if (!expense) return <p className="text-gray-500">経費が見つかりません</p>;
+  if (!expense) return <p className="text-gray-500 dark:text-gray-400">経費が見つかりません</p>;
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900">経費編集</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">経費編集</h2>
       <ExpenseForm expense={expense} />
     </div>
   );

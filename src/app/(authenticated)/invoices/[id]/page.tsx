@@ -21,11 +21,11 @@ export default function EditInvoicePage({
       </div>
     );
   }
-  if (!invoice) return <p className="text-gray-500">請求書が見つかりません</p>;
+  if (!invoice) return <p className="text-gray-500 dark:text-gray-400">請求書が見つかりません</p>;
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900">請求書編集</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">請求書編集</h2>
       <InvoiceForm invoice={invoice} />
     </div>
   );

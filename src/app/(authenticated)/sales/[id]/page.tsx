@@ -21,11 +21,11 @@ export default function EditSalePage({
       </div>
     );
   }
-  if (!sale) return <p className="text-gray-500">売上が見つかりません</p>;
+  if (!sale) return <p className="text-gray-500 dark:text-gray-400">売上が見つかりません</p>;
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900">売上編集</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">売上編集</h2>
       <SaleForm sale={sale} />
     </div>
   );

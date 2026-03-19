@@ -17,10 +17,10 @@ const STATUS_LABELS: Record<string, string> = {
 };
 
 const STATUS_COLORS: Record<string, string> = {
-  negotiating: "bg-yellow-50 text-yellow-700",
-  inProgress: "bg-blue-50 text-blue-700",
-  completed: "bg-green-50 text-green-700",
-  paid: "bg-gray-100 text-gray-600",
+  negotiating: "bg-yellow-50 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
+  inProgress: "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+  completed: "bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+  paid: "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400",
 };
 
 export default function SalesPage() {
@@ -29,7 +29,7 @@ export default function SalesPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">売上一覧</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">売上一覧</h2>
         <Link href="/sales/new">
           <Button>
             <Plus className="w-4 h-4 mr-2" />

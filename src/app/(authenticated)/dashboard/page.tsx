@@ -84,17 +84,17 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <h2 className="text-2xl font-bold text-gray-900">ダッシュボード</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">ダッシュボード</h2>
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card>
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-50 rounded-lg">
-              <TrendingUp className="w-5 h-5 text-blue-600" />
+            <div className="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
+              <TrendingUp className="w-5 h-5 text-blue-600 dark:text-blue-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">今月の売上</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">今月の売上</p>
               <p className="text-xl font-bold">{formatYen(thisMonthSales)}</p>
             </div>
           </div>
@@ -102,11 +102,11 @@ export default function DashboardPage() {
 
         <Card>
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-red-50 rounded-lg">
-              <Receipt className="w-5 h-5 text-red-600" />
+            <div className="p-2 bg-red-50 dark:bg-red-900/30 rounded-lg">
+              <Receipt className="w-5 h-5 text-red-600 dark:text-red-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">今月の経費</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">今月の経費</p>
               <p className="text-xl font-bold">{formatYen(thisMonthExpenses)}</p>
             </div>
           </div>
@@ -114,11 +114,11 @@ export default function DashboardPage() {
 
         <Card>
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-yellow-50 rounded-lg">
-              <FileText className="w-5 h-5 text-yellow-600" />
+            <div className="p-2 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg">
+              <FileText className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">未入金</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">未入金</p>
               <p className="text-xl font-bold">
                 {unpaidInvoices.length}件 /{" "}
                 {formatYen(unpaidInvoices.reduce((s, i) => s + i.amount, 0))}
@@ -129,11 +129,11 @@ export default function DashboardPage() {
 
         <Card>
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-green-50 rounded-lg">
-              <Users className="w-5 h-5 text-green-600" />
+            <div className="p-2 bg-green-50 dark:bg-green-900/30 rounded-lg">
+              <Users className="w-5 h-5 text-green-600 dark:text-green-400" />
             </div>
             <div>
-              <p className="text-sm text-gray-500">顧客数</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">顧客数</p>
               <p className="text-xl font-bold">{customers.length}</p>
             </div>
           </div>
@@ -148,11 +148,13 @@ export default function DashboardPage() {
         {chartData.length > 0 ? (
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis tickFormatter={(v) => `¥${(v / 10000).toFixed(0)}万`} />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--color-foreground, #e5e7eb)" opacity={0.2} />
+              <XAxis dataKey="month" stroke="var(--color-foreground, #6b7280)" />
+              <YAxis tickFormatter={(v) => `¥${(v / 10000).toFixed(0)}万`} stroke="var(--color-foreground, #6b7280)" />
               <Tooltip
                 formatter={(value) => [formatYen(value as number), "売上"]}
+                contentStyle={{ backgroundColor: "var(--background)", border: "1px solid var(--color-foreground)", borderRadius: "8px", opacity: 0.9 }}
+                labelStyle={{ color: "var(--foreground)" }}
               />
               <Bar dataKey="amount" fill="#3B82F6" radius={[4, 4, 0, 0]} />
             </BarChart>
@@ -181,17 +183,17 @@ export default function DashboardPage() {
                   <Link
                     key={s.id}
                     href={`/sales/${s.id}`}
-                    className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                    className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                   >
                     <div>
                       <p className="font-medium text-sm">{s.projectName}</p>
-                      <p className="text-xs text-gray-500">{s.customerName}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{s.customerName}</p>
                     </div>
                     <div className="text-right">
                       <p className="font-medium text-sm">
                         {formatYen(s.amount)}
                       </p>
-                      <span className="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700">
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
                         {STATUS_LABELS[s.status] || s.status}
                       </span>
                     </div>
@@ -213,11 +215,11 @@ export default function DashboardPage() {
                 <Link
                   key={inv.id}
                   href={`/invoices/${inv.id}`}
-                  className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                 >
                   <div>
                     <p className="font-medium text-sm">{inv.customerName}</p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
                       期限: {formatDate(inv.dueDate)}
                     </p>
                   </div>

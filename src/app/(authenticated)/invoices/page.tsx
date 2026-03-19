@@ -17,10 +17,10 @@ const STATUS_LABELS: Record<string, string> = {
 };
 
 const STATUS_COLORS: Record<string, string> = {
-  draft: "bg-gray-100 text-gray-600",
-  sent: "bg-blue-50 text-blue-700",
-  paid: "bg-green-50 text-green-700",
-  overdue: "bg-red-50 text-red-700",
+  draft: "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400",
+  sent: "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+  paid: "bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+  overdue: "bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-400",
 };
 
 export default function InvoicesPage() {
@@ -29,7 +29,7 @@ export default function InvoicesPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">請求書一覧</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">請求書一覧</h2>
         <Link href="/invoices/new">
           <Button>
             <Plus className="w-4 h-4 mr-2" />

@@ -23,12 +23,12 @@ export default function EditCustomerPage({
   }
 
   if (!customer) {
-    return <p className="text-gray-500">顧客が見つかりません</p>;
+    return <p className="text-gray-500 dark:text-gray-400">顧客が見つかりません</p>;
   }
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900">顧客編集</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">顧客編集</h2>
       <CustomerForm customer={customer} />
     </div>
   );

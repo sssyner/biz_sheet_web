@@ -21,11 +21,11 @@ export default function EditContractPage({
       </div>
     );
   }
-  if (!contract) return <p className="text-gray-500">契約が見つかりません</p>;
+  if (!contract) return <p className="text-gray-500 dark:text-gray-400">契約が見つかりません</p>;
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900">契約編集</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">契約編集</h2>
       <ContractForm contract={contract} />
     </div>
   );

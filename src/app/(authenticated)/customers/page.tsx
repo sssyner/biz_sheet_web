@@ -14,7 +14,7 @@ export default function CustomersPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900">顧客一覧</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">顧客一覧</h2>
         <Link href="/customers/new">
           <Button>
             <Plus className="w-4 h-4 mr-2" />
