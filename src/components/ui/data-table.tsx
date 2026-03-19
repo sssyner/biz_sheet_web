@@ -42,11 +42,11 @@ export function DataTable<T>({
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-gray-200">
+          <tr className="border-b border-gray-200 dark:border-gray-700">
             {columns.map((col) => (
               <th
                 key={col.key}
-                className="text-left py-3 px-4 font-medium text-gray-500"
+                className="text-left py-3 px-4 font-medium text-gray-500 dark:text-gray-400"
               >
                 {col.header}
               </th>
@@ -57,10 +57,10 @@ export function DataTable<T>({
           {data.map((item) => (
             <tr
               key={getId(item)}
-              className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+              className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
             >
               {columns.map((col) => (
-                <td key={col.key} className="py-3 px-4">
+                <td key={col.key} className="py-3 px-4 dark:text-gray-300">
                   <Link href={`${linkPrefix}/${getId(item)}`} className="block">
                     {col.render
                       ? col.render(item)
