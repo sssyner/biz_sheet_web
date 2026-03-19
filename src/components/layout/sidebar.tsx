@@ -11,10 +11,14 @@ import {
   FileCheck,
   MessageSquare,
   LogOut,
+  Sun,
+  Moon,
+  Monitor,
 } from "lucide-react";
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { useAuth } from "@/lib/auth-context";
+import { useTheme } from "@/lib/theme-context";
 
 const navItems = [
   { href: "/dashboard", label: "ダッシュボード", icon: LayoutDashboard },
@@ -29,6 +33,15 @@ const navItems = [
 export function Sidebar() {
   const pathname = usePathname();
   const { user } = useAuth();
+  const { theme, setTheme } = useTheme();
+
+  const cycleTheme = () => {
+    const next = theme === "light" ? "dark" : theme === "dark" ? "system" : "light";
+    setTheme(next);
+  };
+
+  const ThemeIcon = theme === "light" ? Sun : theme === "dark" ? Moon : Monitor;
+  const themeLabel = theme === "light" ? "ライト" : theme === "dark" ? "ダーク" : "システム";
 
   return (
     <aside className="w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col h-screen fixed left-0 top-0">
@@ -57,7 +70,14 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+      <div className="p-4 border-t border-gray-200 dark:border-gray-700 space-y-1">
+        <button
+          onClick={cycleTheme}
+          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100 w-full"
+        >
+          <ThemeIcon className="w-5 h-5" />
+          {themeLabel}
+        </button>
         <button
           onClick={() => signOut(auth)}
           className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100 w-full"
