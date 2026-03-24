@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BizSheet（Web版）
 
-## Getting Started
+フリーランス・小規模事業者向けの業務管理Webアプリ。売上・顧客・経費・契約・請求書を一元管理するダッシュボード。
 
-First, run the development server:
+## 技術スタック
+
+| レイヤー | 技術 |
+|---|---|
+| フレームワーク | Next.js 16 (App Router) |
+| 言語 | TypeScript |
+| UI | Tailwind CSS + shadcn/ui |
+| バックエンド | Firebase (Auth / Firestore) |
+| 認証 | Google OAuth |
+| グラフ | Recharts |
+| フォーム | React Hook Form + Zod |
+| データ取得 | SWR + Firestore リアルタイムリスナー |
+
+## 主な機能
+
+- **ダッシュボード** — 月間売上・経費、未払い請求書、顧客数、6ヶ月売上推移チャート
+- **顧客管理** — 会社名・担当者・連絡先のCRUD
+- **売上管理** — 商談 → 進行中 → 完了 → 入金のステータス追跡
+- **経費管理** — カテゴリ別（交通費、消耗品、交際費、通信費、家賃、光熱費）の記録
+- **契約管理** — 契約期間・顧客紐付けの管理
+- **請求書管理** — 下書き → 送付 → 入金 / 延滞のワークフロー
+- **AIチャット** — ビジネス相談用チャット機能
+- **ダークモード** — ライト / ダーク / システム切替対応
+
+## セットアップ
 
 ```bash
+cp .env.local.example .env.local
+# .env.local に Firebase の設定値を記入
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
